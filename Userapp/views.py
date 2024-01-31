@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib.auth.models import User
 from django.contrib import messages
 from Userapp.forms import SignUpForm,SignInForm,ForgotPasswordForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 # Create your views here.
@@ -79,4 +79,7 @@ class IndexView(TemplateView):
     template_name="index.html"
 
 
+def sign_out_view(request,*args,**kwargs):
+    logout(request)
+    return redirect("signin")
 
